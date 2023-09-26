@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import Body from './Body'
+import Quotes from './Quotes'
+import { generarColor } from './color'
 
 function App() {
+  const [color, setColor] = useState(generarColor())
+
+  const handleChangeColor =(color)=>{
+    setColor(color)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Body color={color}>
+      <Quotes color={color} onChangeColor={handleChangeColor} />
+    </Body>
+  )
 }
 
-export default App;
+export default App
